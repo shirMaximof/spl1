@@ -3,10 +3,9 @@
 //BaseAction
     BaseAction::BaseAction() { }
     ActionStatus BaseAction::getStatus() const { }
-    void BaseAction::complete()
-    {}
+    void BaseAction::complete(){}
     void BaseAction::error(std::string errorMsg){}
-    std::string getErrorMsg() const {}
+    std::string BaseAction::getErrorMsg() const {}
 
 //OpenTrainer
     OpenTrainer::OpenTrainer(int id, std::vector<Customer *> &customersList) : trainerId(id), customers(customersList) {}
@@ -15,88 +14,63 @@
 
 
 
-class Order : public BaseAction {
-public:
-    Order(int id);
-    void act(Studio &studio);
-    std::string toString() const;
-private:
-    const int trainerId;
-};
+//Order
+
+    Order::Order(int id){}
+    Order::void act(Studio &studio){}
+    std::string Order::toString() const{}
 
 
-class MoveCustomer : public BaseAction {
-public:
-    MoveCustomer(int src, int dst, int customerId);
-    void act(Studio &studio);
-    std::string toString() const;
-private:
-    const int srcTrainer;
-    const int dstTrainer;
-    const int id;
-};
+//MoveCustomer
+    MoveCustomer::MoveCustomer(int src, int dst, int customerId){}
+    MoveCustomer::void act(Studio &studio){}
+    std::string MoveCustomer::toString() const{}
 
 
-class Close : public BaseAction {
-public:
-    Close(int id);
-    void act(Studio &studio);
-    std::string toString() const;
-private:
-    const int trainerId;
-};
+//Close
+
+    Close::Close(int id){}
+    Close::void act(Studio &studio){}
+    std::string  Close::toString() const{}
 
 
-class CloseAll : public BaseAction {
-public:
-    CloseAll();
-    void act(Studio &studio);
-    std::string toString() const;
-private:
-};
+// CloseAll
+    CloseAll::CloseAll(){}
+    CloseAll::void act(Studio &studio){}
+    std::string  CloseAll::toString() const{}
 
 
-class PrintWorkoutOptions : public BaseAction {
-public:
-    PrintWorkoutOptions();
-    void act(Studio &studio);
-    std::string toString() const;
-private:
-};
+//PrintWorkoutOptions
+
+    PrintWorkoutOptions::PrintWorkoutOptions(){}
+    PrintWorkoutOptions::void act(Studio &studio){}
+    std::string PrintWorkoutOptions::toString() const{}
 
 
-class PrintTrainerStatus : public BaseAction {
-public:
-    PrintTrainerStatus(int id);
-    void act(Studio &studio);
-    std::string toString() const;
-private:
-    const int trainerId;
-};
+
+//PrintTrainerStatus
+    PrintTrainerStatus::PrintTrainerStatus(int id){}
+    PrintTrainerStatus::void act(Studio &studio){}
+    std::string PrintTrainerStatus::toString() const{}
 
 
-class PrintActionsLog : public BaseAction {
-public:
-    PrintActionsLog();
-    void act(Studio &studio);
-    std::string toString() const;
-private:
-};
+
+//PrintActionsLog
+    PrintActionsLog ::PrintActionsLog(){}
+    PrintActionsLog ::void act(Studio &studio){}
+    std::string PrintActionsLog ::toString() const{}
 
 
-class BackupStudio : public BaseAction {
-public:
-    BackupStudio();
-    void act(Studio &studio);
-    std::string toString() const;
-private:
-};
+
+//BackupStudio
+    BackupStudio::BackupStudio(){}
+    BackupStudio::void act(Studio &studio){}
+    std::string BackupStudio::toString() const{}
 
 
-class RestoreStudio : public BaseAction {
-public:
-    RestoreStudio();
-    void act(Studio &studio);
-    std::string toString() const;
 
-};
+    //RestoreStudio
+    RestoreStudio ::RestoreStudio(){}
+    RestoreStudio :: void act(Studio &studio){}
+    std::string RestoreStudio ::toString() const{}
+
