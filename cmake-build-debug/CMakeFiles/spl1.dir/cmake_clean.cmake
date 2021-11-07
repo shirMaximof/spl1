@@ -1,13 +1,11 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/spl1.dir/src/Action.cpp.obj"
-  "CMakeFiles/spl1.dir/src/Customer.cpp.obj"
-  "CMakeFiles/spl1.dir/src/Studio.cpp.obj"
-  "CMakeFiles/spl1.dir/src/Trainer.cpp.obj"
-  "CMakeFiles/spl1.dir/src/Workout.cpp.obj"
-  "CMakeFiles/spl1.dir/src/main.cpp.obj"
-  "spl1.exe"
-  "spl1.exe.manifest"
-  "spl1.lib"
+  "CMakeFiles/spl1.dir/src/Action.cpp.o"
+  "CMakeFiles/spl1.dir/src/Customer.cpp.o"
+  "CMakeFiles/spl1.dir/src/Studio.cpp.o"
+  "CMakeFiles/spl1.dir/src/Trainer.cpp.o"
+  "CMakeFiles/spl1.dir/src/Workout.cpp.o"
+  "CMakeFiles/spl1.dir/src/main.cpp.o"
+  "spl1"
   "spl1.pdb"
 )
 

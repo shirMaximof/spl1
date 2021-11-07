@@ -6,7 +6,7 @@
     void BaseAction::complete()
     {}
     void BaseAction::error(std::string errorMsg){}
-    std::string getErrorMsg() const {}
+    std::string BaseAction::getErrorMsg() const {}
 
 //OpenTrainer
     OpenTrainer::OpenTrainer(int id, std::vector<Customer *> &customersList) : trainerId(id), customers(customersList) {}
