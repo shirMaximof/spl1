@@ -8,14 +8,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/97252/Desktop/spl1/src/Action.cpp" "C:/Users/97252/Desktop/spl1/cmake-build-debug/CMakeFiles/spl1.dir/src/Action.cpp.obj"
-  "C:/Users/97252/Desktop/spl1/src/Customer.cpp" "C:/Users/97252/Desktop/spl1/cmake-build-debug/CMakeFiles/spl1.dir/src/Customer.cpp.obj"
-  "C:/Users/97252/Desktop/spl1/src/Studio.cpp" "C:/Users/97252/Desktop/spl1/cmake-build-debug/CMakeFiles/spl1.dir/src/Studio.cpp.obj"
-  "C:/Users/97252/Desktop/spl1/src/Trainer.cpp" "C:/Users/97252/Desktop/spl1/cmake-build-debug/CMakeFiles/spl1.dir/src/Trainer.cpp.obj"
-  "C:/Users/97252/Desktop/spl1/src/Workout.cpp" "C:/Users/97252/Desktop/spl1/cmake-build-debug/CMakeFiles/spl1.dir/src/Workout.cpp.obj"
-  "C:/Users/97252/Desktop/spl1/src/main.cpp" "C:/Users/97252/Desktop/spl1/cmake-build-debug/CMakeFiles/spl1.dir/src/main.cpp.obj"
+  "/Users/michaeltzahi/CLionProjects/spl1/src/Action.cpp" "/Users/michaeltzahi/CLionProjects/spl1/cmake-build-debug/CMakeFiles/spl1.dir/src/Action.cpp.o"
+  "/Users/michaeltzahi/CLionProjects/spl1/src/Customer.cpp" "/Users/michaeltzahi/CLionProjects/spl1/cmake-build-debug/CMakeFiles/spl1.dir/src/Customer.cpp.o"
+  "/Users/michaeltzahi/CLionProjects/spl1/src/Studio.cpp" "/Users/michaeltzahi/CLionProjects/spl1/cmake-build-debug/CMakeFiles/spl1.dir/src/Studio.cpp.o"
+  "/Users/michaeltzahi/CLionProjects/spl1/src/Trainer.cpp" "/Users/michaeltzahi/CLionProjects/spl1/cmake-build-debug/CMakeFiles/spl1.dir/src/Trainer.cpp.o"
+  "/Users/michaeltzahi/CLionProjects/spl1/src/Workout.cpp" "/Users/michaeltzahi/CLionProjects/spl1/cmake-build-debug/CMakeFiles/spl1.dir/src/Workout.cpp.o"
+  "/Users/michaeltzahi/CLionProjects/spl1/src/main.cpp" "/Users/michaeltzahi/CLionProjects/spl1/cmake-build-debug/CMakeFiles/spl1.dir/src/main.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "MSVC")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
