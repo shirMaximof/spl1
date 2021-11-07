@@ -19,4 +19,7 @@
     WorkoutType Workout::getType() const {
         return type;
     }
-//};
+    bool Workout::operator<(Workout & w1){
+        return getPrice()<w1.getPrice();
+
+}
