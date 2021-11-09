@@ -66,7 +66,25 @@ using namespace std;
 //FullBodyCustomer
     FullBodyCustomer::FullBodyCustomer(std::string name, int id): Customer(name,id){}
     std::vector<int> FullBodyCustomer::order(const std::vector<Workout> &workout_options){
-
+        std::vector<Workout>* copy_workoutOptions= new std::vector<Workout>(workout_options);
+        std::vector<int>* ordered= new std::vector<int>();
+        std::sort(copy_workoutOptions->begin(),copy_workoutOptions->end());
+        for(int i=0;i<copy_workoutOptions->size();i++){
+            if(workout_options[i].getType()==CARDIO)
+                ordered->push_back(workout_options[i].getType());
+            break;
+        }
+        for(int i=copy_workoutOptions->size()-1;i>=0;i++){
+            if(workout_options[i].getType()==MIXED)
+                ordered->push_back(workout_options[i].getType());
+            break;
+        }
+        for(int i=0;i<copy_workoutOptions->size();i++){
+            if(workout_options[i].getType()==ANAEROBIC)
+                ordered->push_back(workout_options[i].getType());
+            break;
+        }
+        return *ordered;
 
     }
     std::string FullBodyCustomer::toString() const{}//continue
