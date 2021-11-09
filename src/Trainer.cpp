@@ -7,43 +7,86 @@
 #include "Workout.h"
 #include "Trainer.h"
 
+#include <iostream>
+
 typedef std::pair<int, Workout> OrderPair;
 
 //class Trainer{
-    Trainer::Trainer(int t_capacity){
-        capacity=t_capacity;
-    }
-    int Trainer::getCapacity() const{
+Trainer::Trainer(int t_capacity) {
+    capacity = t_capacity;
+    open = false;
+}
 
-    }
-    void Trainer::addCustomer(Customer* customer){
+int Trainer::getCapacity() const {
+    return capacity;
+}
 
+void Trainer::addCustomer(Customer *customer) {
+    if (customersList.size() == capacity) {
+        std::cout << "Cannot move customer" << std::endl;
+    } else {
+        customersList.push_back(customer);
     }
-    void Trainer::removeCustomer(int id){
+}
 
-    }
-    Customer* Trainer::getCustomer(int id){
+void Trainer::removeCustomer(int id) {
+    int i = 0;
+    for (Customer *c: customersList)
+        if (c->getId() == id) {
+            customersList.erase(customersList.begin() + i);
+            int j = 0;
+            for (OrderPair p: orderList) {
+                if (p.first == id)
+                    orderList.erase(orderList.begin() + j);
+                j++;
+            }
+            break;
+        }
+    i++;
+}
 
-    }
-    std::vector<Customer*>& Trainer::getCustomers(){
+Customer *Trainer::getCustomer(int id) {
+    for (Customer *c: customersList)
+        if (c->getId() == id)
+            return c;
+}
 
-    }
-    std::vector<OrderPair>& Trainer::getOrders(){
+std::vector<Customer *> &Trainer::getCustomers() {
+    return customersList;
+}
 
-    }
-    void Trainer::order(const int customer_id, const std::vector<int> workout_ids, const std::vector<Workout>& workout_options){
+std::vector<OrderPair> &Trainer::getOrders() {
+    return orderList;
+}
 
+void
+Trainer::order(const int customer_id, const std::vector<int> workout_ids, const std::vector<Workout> &workout_options) {
+    for (Customer *c: customersList) {
+        if (c->getId() == customer_id)
+            c->order(workout_options);
+        for (Workout w: c->workouts) {
+            orderList.push_back(std::make_pair(customer_id, w));
+        }
     }
-    void Trainer::openTrainer(){
+}
 
-    }
-    void Trainer::closeTrainer(){
+void Trainer::openTrainer() {
+    open = true;
+}
 
+void Trainer::closeTrainer() {
+    open = false;
+}
+
+int Trainer::getSalary() {
+    int salary = 0;
+    for (OrderPair p: orderList) {
+        salary += p.second.getPrice();
     }
-    int Trainer::getSalary(){
-        return -1;
-    }
-    bool Trainer::isOpen(){
-        return open;
-    }
+    return salary;
+}
+
+bool Trainer::isOpen() {
+    return open;
+}
 //};
