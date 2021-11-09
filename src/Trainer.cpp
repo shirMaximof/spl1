@@ -61,18 +61,10 @@ std::vector<OrderPair> &Trainer::getOrders() {
 
 void
 Trainer::order(const int customer_id, const std::vector<int> workout_ids, const std::vector<Workout> &workout_options) {
-    for (Customer *c: customersList) {
-        if (c->getId() == customer_id) {
-            std::vector<int> workouts = c->order(workout_options);
-            for (int id: workouts) {
-                for (Workout w: workout_options) {
+            for (int id: workout_ids)
+                for (Workout w: workout_options)
                     if (id == w.getId())
                         orderList.push_back(std::make_pair(customer_id, w));
-                }
-            }
-
-        }
-    }
 }
 
 void Trainer::openTrainer() {
@@ -81,6 +73,8 @@ void Trainer::openTrainer() {
 
 void Trainer::closeTrainer() {
     open = false;
+    customersList.clear();
+    orderList.clear();
 }
 
 int Trainer::getSalary() {
@@ -93,5 +87,8 @@ int Trainer::getSalary() {
 
 bool Trainer::isOpen() {
     return open;
+}
+bool Trainer::isFull() {
+    return capacity <= customersList.size();
 }
 //};
