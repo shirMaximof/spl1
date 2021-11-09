@@ -62,10 +62,15 @@ std::vector<OrderPair> &Trainer::getOrders() {
 void
 Trainer::order(const int customer_id, const std::vector<int> workout_ids, const std::vector<Workout> &workout_options) {
     for (Customer *c: customersList) {
-        if (c->getId() == customer_id)
-            c->order(workout_options);
-        for (Workout w: c->workouts) {
-            orderList.push_back(std::make_pair(customer_id, w));
+        if (c->getId() == customer_id) {
+            std::vector<int> workouts = c->order(workout_options);
+            for (int id: workouts) {
+                for (Workout w: workout_options) {
+                    if (id == w.getId())
+                        orderList.push_back(std::make_pair(customer_id, w));
+                }
+            }
+
         }
     }
 }
