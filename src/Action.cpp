@@ -25,7 +25,12 @@
         t->openTrainer();
 
 }
-    std::string OpenTrainer::toString() const {} //continue
+    std::string OpenTrainer::toString() const {
+    string costumers_s="";
+    for(int i=0;i=customers.size();i++)
+        costumers_s = costumers_s+" "+customers[i]->toString() ;
+    return "open "+trainerId; //continue
+} //continue
 
 
 

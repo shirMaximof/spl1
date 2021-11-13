@@ -63,8 +63,10 @@ void
 Trainer::order(const int customer_id, const std::vector<int> workout_ids, const std::vector<Workout> &workout_options) {
             for (int id: workout_ids)
                 for (Workout w: workout_options)
-                    if (id == w.getId())
+                    if (id == w.getId()) {
                         orderList.push_back(std::make_pair(customer_id, w));
+//print here
+                    }
 }
 
 void Trainer::openTrainer() {
