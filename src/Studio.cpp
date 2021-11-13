@@ -96,8 +96,7 @@ void Studio::start(){
         if(action == "order"){
             int id = std::stoi(actions_v[1]);
             Order *order= new Order(id);
-            order->act(*this); // print from here
-            //print in trainer
+            order->act(*this);
             actionsLog.push_back(order);
         }
         if(action == "move"){
