@@ -16,7 +16,7 @@ using namespace std;
 
     SweatyCustomer::SweatyCustomer(std::string name, int id): Customer(name,id){}
     std::vector<int> SweatyCustomer::order(const std::vector<Workout> &workout_options){
-        std::vector<Workout>* copy_workoutOptions= new std::vector<Workout>(workout_options);
+       // std::vector<Workout>* copy_workoutOptions= new std::vector<Workout>(workout_options);
         std::vector<int>* ordered= new std::vector<int>();
         for(int i=0;i<workout_options.size();i++){
             if(workout_options[i].getType()==CARDIO)
@@ -24,14 +24,14 @@ using namespace std;
         }
         return *ordered;
 }
-    std::string SweatyCustomer::toString() const{return getName();} //check
+    std::string SweatyCustomer::toString() const{return getName();}
 
 
 
 //CheapCustomer
     CheapCustomer::CheapCustomer(std::string name, int id): Customer(name,id){}
     std::vector<int> CheapCustomer::order(const std::vector<Workout> &workout_options){
-        std::vector<Workout>* copy_workoutOptions= new std::vector<Workout>(workout_options);
+     //   std::vector<Workout>* copy_workoutOptions= new std::vector<Workout>(workout_options);
         std::vector<int>* ordered= new std::vector<int>();
         int cheap = workout_options[0].getPrice();
         for(int i=1;i<workout_options.size();i++){
@@ -41,7 +41,7 @@ using namespace std;
         ordered->push_back(cheap);
         return *ordered;
 }
-    std::string CheapCustomer::toString() const{} //complete
+    std::string CheapCustomer::toString() const{return getName();} //complete
 
 
 
@@ -52,14 +52,13 @@ using namespace std;
         std::vector<Workout>* copy_workoutOptions= new std::vector<Workout>(workout_options);
         std::vector<int>* ordered= new std::vector<int>();
         std::sort(copy_workoutOptions->begin(),copy_workoutOptions->end());
-        for(int i=workout_options.size()-1;i>0;i--){
-            if(workout_options[i].getType()==ANAEROBIC)
-                ordered->push_back(workout_options[i].getType());
+        for(int i=copy_workoutOptions->size()-1;i>0;i--){
+            if((*copy_workoutOptions)[i].getType()==ANAEROBIC)
+                ordered->push_back((*copy_workoutOptions)[i].getType());
         }
-
         return *ordered;
 }
-    std::string HeavyMuscleCustomer::toString() const{}//continue
+    std::string HeavyMuscleCustomer::toString() const{return getName();}
 
 
 
@@ -70,24 +69,24 @@ using namespace std;
         std::vector<int>* ordered= new std::vector<int>();
         std::sort(copy_workoutOptions->begin(),copy_workoutOptions->end());
         for(int i=0;i<copy_workoutOptions->size();i++){
-            if(workout_options[i].getType()==CARDIO)
-                ordered->push_back(workout_options[i].getType());
+            if((*copy_workoutOptions)[i].getType()==CARDIO)
+                ordered->push_back((*copy_workoutOptions)[i].getType());
             break;
         }
         for(int i=copy_workoutOptions->size()-1;i>=0;i++){
-            if(workout_options[i].getType()==MIXED)
-                ordered->push_back(workout_options[i].getType());
+            if((*copy_workoutOptions)[i].getType()==MIXED)
+                ordered->push_back((*copy_workoutOptions)[i].getType());
             break;
         }
         for(int i=0;i<copy_workoutOptions->size();i++){
-            if(workout_options[i].getType()==ANAEROBIC)
-                ordered->push_back(workout_options[i].getType());
+            if((*copy_workoutOptions)[i].getType()==ANAEROBIC)
+                ordered->push_back((*copy_workoutOptions)[i].getType());
             break;
         }
         return *ordered;
 
     }
-    std::string FullBodyCustomer::toString() const{}//continue
+    std::string FullBodyCustomer::toString() const{return getName();}
 
 
 
