@@ -28,8 +28,15 @@
     std::string OpenTrainer::toString() const {
     string costumers_s="";
     for(int i=0;i=customers.size();i++)
-        costumers_s = costumers_s+" "+customers[i]->toString() ;
-    return "open "+trainerId; //continue
+        costumers_s = costumers_s+" "+customers[i]->toString();
+    std::string ans= "open " + std::to_string(trainerId) + " "+ costumers_s+" ";
+        if(getStatus()==ERROR){
+            ans+=getErrorMsg();
+        }
+        else{
+            ans+= "Completed";
+        }
+        return ans;
 } //continue
 
 
@@ -37,21 +44,33 @@
 //Order
 
     Order::Order(int id):trainerId(id){}
-    void Order::act(Studio &studio){
-    Trainer* t=studio.getTrainer(trainerId);
-    if(t==nullptr | !t->isOpen())
-        error("\"Trainer does not exist or is not open\"");
-    else
-        for(Customer* c : t->getCustomers())
-            t->order(c->getId(),c->order(studio.getWorkoutOptions()),studio.getWorkoutOptions());
-}
-    std::string Order::toString() const{} // continue
+    void Order::act(Studio &studio) {
+        Trainer *t = studio.getTrainer(trainerId);
+        if (t == nullptr | !t->isOpen())
+            error("\"Trainer does not exist or is not open\"");
+        else
+            for (Customer *c: t->getCustomers()) {
+                t->order(c->getId(), c->order(studio.getWorkoutOptions()), studio.getWorkoutOptions());
+            }
+    }
+
+    std::string Order::toString() const{
+    std::string ans= "order "+std::to_string(trainerId)+" ";
+        if(getStatus()==ERROR){
+            ans+=getErrorMsg();
+        }
+        else{
+            ans+= "Completed";
+        }
+        return ans;
+} // continue
 
 
 //MoveCustomer
     MoveCustomer::MoveCustomer(int src, int dst, int customerId):srcTrainer(src),dstTrainer(dst),id(customerId){
 }
    void MoveCustomer::act(Studio &studio){
+
        Trainer *srcS = studio.getTrainer(srcTrainer);
        Trainer *srcD = studio.getTrainer(dstTrainer);
         if(srcD== nullptr | srcS == nullptr | !srcD->isOpen() | !srcS->isOpen() | srcS->getCustomer(id)== nullptr | srcD->isFull())
@@ -65,11 +84,17 @@
                 close.act(studio);
             }
        }
-       
-
 }
-    std::string MoveCustomer::toString() const{} //continue
-
+    std::string MoveCustomer::toString() const{
+    std::string ans= "move "+std::to_string(srcTrainer)+" "+std::to_string(dstTrainer)+" "+std::to_string(id)+" ";
+    if(getStatus()==ERROR){
+        ans+=getErrorMsg();
+    }
+    else{
+        ans+= "Completed";
+    }
+        return ans;
+}
 
 //Close
 
@@ -81,7 +106,16 @@
     t->closeTrainer();
     std::cout<<"Trainer "<<trainerId<<" is closed. Salary "<<salary<<"NIS"<<std::endl;
 }
-    std::string  Close::toString() const{}
+    std::string  Close::toString() const{
+        std::string ans= "close "+std::to_string(trainerId);
+        if(getStatus()==ERROR){
+            ans+=getErrorMsg();
+        }
+        else{
+            ans+= "Completed";
+        }
+        return ans;
+}
 
 
 // CloseAll
@@ -93,7 +127,16 @@
                 Close(id).act(studio);
         }
 }
-    std::string  CloseAll::toString() const{}
+    std::string  CloseAll::toString() const{
+        std::string ans= "closeAll ";
+        if(getStatus()==ERROR){
+            ans+=getErrorMsg();
+        }
+        else{
+            ans+= "Completed";
+        }
+        return ans;
+}
 
 
 //PrintWorkoutOptions
@@ -103,7 +146,16 @@
     for(Workout w : studio.getWorkoutOptions())
         std::cout<<w.getName()<<", "<<w.getType()<<", "<<w.getPrice()<<std::endl;
 }
-    std::string PrintWorkoutOptions::toString() const{}
+    std::string PrintWorkoutOptions::toString() const{
+        std::string ans= "PrintWorkoutOptions ";
+        if(getStatus()==ERROR){
+            ans+=getErrorMsg();
+        }
+        else{
+            ans+= "Completed";
+        }
+        return ans;
+}
 
 
 
@@ -126,7 +178,16 @@
             std::cout<<p.second.getName()<<" "<<p.second.getPrice()<<"NIS "<<p.first<<std::endl;
     }
 }
-    std::string PrintTrainerStatus::toString() const{}
+    std::string PrintTrainerStatus::toString() const{
+        std::string ans= "PrintTrainerStatus "+std::to_string(trainerId)+" ";
+        if(getStatus()==ERROR){
+            ans+=getErrorMsg();
+        }
+        else{
+            ans+= "Completed";
+        }
+        return ans;
+}
 
 
 
@@ -137,7 +198,16 @@
     for(int i=0;i<bAction.size();i++)
         bAction[i]->toString();
 }
-    std::string PrintActionsLog ::toString() const{}
+    std::string PrintActionsLog ::toString() const{
+    std::string ans="log ";
+        if(getStatus()==ERROR){
+            ans+=getErrorMsg();
+        }
+        else{
+            ans+= "Completed";
+        }
+        return ans;
+}
 
 
 
@@ -148,6 +218,14 @@
 
 }
     std::string BackupStudio::toString() const{
+        std::string ans= "BackupStudio ";
+        if(getStatus()==ERROR){
+            ans+=getErrorMsg();
+        }
+        else{
+            ans+= "Completed";
+        }
+        return ans;
 }
 
 
@@ -159,5 +237,14 @@
         else
             studio = *backup; //check
     }
-    std::string RestoreStudio ::toString() const{}
+    std::string RestoreStudio ::toString() const{
+        std::string ans= "RestoreStudio ";
+        if(getStatus()==ERROR){
+            ans+=getErrorMsg();
+        }
+        else{
+            ans+= "Completed";
+        }
+        return ans;
+}
 
