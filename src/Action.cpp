@@ -2,7 +2,7 @@
 #include "Trainer.h"
 #include "Studio.h"
 #include <iostream>
-#include "main.cpp"
+extern Studio *backup;
 
 //BaseAction
     BaseAction::BaseAction() { }
@@ -26,7 +26,7 @@
 
 }
     std::string OpenTrainer::toString() const {
-    string costumers_s="";
+    std::string costumers_s="";
     for(int i=0;i=customers.size();i++)
         costumers_s = costumers_s+" "+customers[i]->toString();
     std::string ans= "open " + std::to_string(trainerId) + " "+ costumers_s+" ";
